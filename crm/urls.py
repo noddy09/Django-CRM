@@ -1,6 +1,7 @@
 import os
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
 from django.contrib.auth import views
 from django.urls import include, path
 from drf_yasg.views import get_schema_view
@@ -25,6 +26,8 @@ schema_view = get_schema_view(
 app_name = "crm"
 
 urlpatterns = [
+
+    path('accounts/', admin.site.urls),
     url(
         r"^swagger(?P<format>\.json|\.yaml)$",
         schema_view.without_ui(cache_timeout=0),

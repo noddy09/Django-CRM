@@ -93,7 +93,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     profile_pic = models.FileField(
         max_length=1000, upload_to=img_url, null=True, blank=True
     )
-    skype_ID = models.CharField(max_length=50)
+    skype_ID = models.CharField(max_length=50, null=False, blank=False)
     description = models.TextField(blank=True, null=True)
 
     USERNAME_FIELD = "email"

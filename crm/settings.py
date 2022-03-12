@@ -14,11 +14,12 @@ SECRET_KEY = os.getenv(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG")
+DEBUG = os.getenv("DEBUG",True)
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".bottlecrm.com"]
 
 INSTALLED_APPS = [
+    'django.contrib.admin',
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.messages",
@@ -86,11 +87,11 @@ WSGI_APPLICATION = "crm.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DBNAME"),
-        "USER": os.getenv("DBUSER"),
-        "PASSWORD": os.getenv("DBPASSWORD"),
-        "HOST": os.getenv("DBHOST"),
-        "PORT": os.getenv("DBPORT"),
+        "NAME": os.getenv("DBNAME",'crm'),
+        "USER": os.getenv("DBUSER",'crm'),
+        "PASSWORD": os.getenv("DBPASSWORD",'Pass123'),
+        "HOST": os.getenv("DBHOST",'localhost'),
+        "PORT": os.getenv("DBPORT",'5432'),
     }
 }
 
@@ -244,4 +245,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-DOMAIN_NAME = os.getenv("DOMAIN_NAME")
+DOMAIN_NAME = os.getenv("DOMAIN_NAME","localhost")
